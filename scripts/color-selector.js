@@ -56,7 +56,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
       }
     };
 
-    // Make it possible to
+    // Make it possible to set spectrum config
     if (self.field.spectrum !== undefined) {
       config = $.extend(self.field.spectrum, config);
     }
