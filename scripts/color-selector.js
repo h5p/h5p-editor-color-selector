@@ -80,7 +80,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
   };
 
   ColorSelector.prototype.getColor = function () {
-    return '#' + this.params;
+    return '#' + (this.params !== undefined ? this.params : '981d99');
   };
 
   /**

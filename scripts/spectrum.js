@@ -987,12 +987,12 @@
         offset.top += inputHeight;
 
         offset.left -=
-            Math.min(offset.left, (offset.left + dpWidth > viewWidth && viewWidth > dpWidth) ?
-            Math.abs(offset.left + dpWidth - viewWidth) : 0);
+            (Math.min(offset.left, (offset.left + dpWidth > viewWidth && viewWidth > dpWidth) ?
+            Math.abs(offset.left + dpWidth - viewWidth) : 0)) - 40;
 
         offset.top -=
-            Math.min(offset.top, ((offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
-            Math.abs(dpHeight + inputHeight - extraY) : extraY));
+            (Math.min(offset.top, ((offset.top + dpHeight > viewHeight && viewHeight > dpHeight) ?
+            Math.abs(dpHeight + inputHeight - extraY) : extraY))) + 37;
 
         return offset;
     }
