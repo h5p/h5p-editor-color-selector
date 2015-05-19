@@ -3,20 +3,21 @@ var H5PEditor = H5PEditor || {};
 /**
  * ImagePositionSelector widget module
  *
- * @param {jQuery} $
+ * @param {H5P.jQuery} $
  */
 H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
 
   /**
-   * Creates a image position selector.
+   * Creates an image position selector.
    *
-   * @param {mixed} parent
+   * @param {object} parent
    * @param {object} field
-   * @param {mixed} params
+   * @param {object} params
    * @param {function} setValue
-   * @returns {C}
+   *
+   * @returns {ColorSelector}
    */
-  function C(parent, field, params, setValue) {
+  function ColorSelector(parent, field, params, setValue) {
     this.parent = parent;
     this.field = field;
     this.params = params;
@@ -26,10 +27,9 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
   /**
    * Append the field to the wrapper.
    *
-   * @param {jQuery} $wrapper
-   * @returns {undefined}
+   * @param {H5P.jQuery} $wrapper
    */
-  C.prototype.appendTo = function ($wrapper) {
+  ColorSelector.prototype.appendTo = function ($wrapper) {
     var self = this;
 
     self.$container = $('<div>', {
@@ -48,14 +48,21 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
       'class': 'h5p-color-picker'
     }).appendTo(self.$container);
 
-    // Create color picker widget
-    self.$colorPicker.spectrum({
+    var config = {
       preferredFormat: 'hex',
       color: self.getColor(),
       change: function (color) {
         self.setColor(color);
       }
-    });
+    };
+
+    // Make it possible to
+    if (self.field.spectrum !== undefined) {
+      config = $.extend(self.field.spectrum, config);
+    }
+
+    // Create color picker widget
+    self.$colorPicker.spectrum(config);
 
     // Add description:
     $('<span>', {
@@ -66,24 +73,24 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     self.$container.appendTo($wrapper);
   };
 
-  C.prototype.setColor = function (color) {
+  ColorSelector.prototype.setColor = function (color) {
     // Save the value
     this.params = color.toHex();
     this.setValue(this.field, this.params);
   };
 
-  C.prototype.getColor = function () {
+  ColorSelector.prototype.getColor = function () {
     return '#' + this.params;
   };
 
   /**
    * Validate the current values.
    */
-  C.prototype.validate = function () {
+  ColorSelector.prototype.validate = function () {
     return (this.params.length === 6);
   };
 
-  C.prototype.remove = function () {};
+  ColorSelector.prototype.remove = function () {};
 
-  return C;
+  return ColorSelector;
 })(H5P.jQuery);

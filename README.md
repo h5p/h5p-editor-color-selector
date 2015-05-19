@@ -8,7 +8,19 @@ Colorpicker found here: http://bgrins.github.io/spectrum/
 
 In your semantics.json set:
 ```json
-widget: 'colorSelector'
+"widget": "colorSelector"
+```
+It is possible to configure the color chooser with all the settings supported by
+spectrum by adding the spectrum attribute to your semantics.json. E.g:
+```json
+"widget": "colorSelector",
+"spectrum": {
+  "showPalette": true,
+  "palette": [
+        ["black", "white", "blanchedalmond"],
+        ["rgb(255, 128, 0);", "hsv 100 70 50", "lightyellow"]
+    ]
+}
 ```
 
 ## License
