@@ -68,7 +68,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     $('<span>', {
       'class': 'h5peditor-field-description',
       html: self.field.description
-    }).appendTo(self.$container)
+    }).appendTo(self.$container);
 
     self.$container.appendTo($wrapper);
   };
