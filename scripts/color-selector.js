@@ -1,5 +1,3 @@
-var H5PEditor = H5PEditor || {};
-
 /**
  * ImagePositionSelector widget module
  *
@@ -10,12 +8,11 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
   /**
    * Creates an image position selector.
    *
-   * @param {object} parent
-   * @param {object} field
-   * @param {object} params
+   * @class H5PEditor.ColorSelector
+   * @param {Object} parent
+   * @param {Object} field
+   * @param {Object} params
    * @param {function} setValue
-   *
-   * @returns {ColorSelector}
    */
   function ColorSelector(parent, field, params, setValue) {
     this.parent = parent;
@@ -26,7 +23,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
 
   /**
    * Append the field to the wrapper.
-   *
+   * @public
    * @param {H5P.jQuery} $wrapper
    */
   ColorSelector.prototype.appendTo = function ($wrapper) {
@@ -73,6 +70,12 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     self.$container.appendTo($wrapper);
   };
 
+
+  /**
+   * Save the color
+   *
+   * @param {Object} color The
+   */
   ColorSelector.prototype.setColor = function (color) {
     // Save the value
     this.params = color.toHex();
