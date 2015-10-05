@@ -90,6 +90,9 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    * Validate the current values.
    */
   ColorSelector.prototype.validate = function () {
+    if (this.params === undefined) {
+      return true; // No value set
+    }
     return (this.params.length === 6);
   };
 
