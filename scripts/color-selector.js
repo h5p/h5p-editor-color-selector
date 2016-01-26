@@ -17,7 +17,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
   function ColorSelector(parent, field, params, setValue) {
     this.parent = parent;
     this.field = field;
-    this.params = params || '981d99';
+    this.params = params;
     this.setValue = setValue;
   }
 
@@ -77,13 +77,14 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    * @param {Object} color The
    */
   ColorSelector.prototype.setColor = function (color) {
-    // Save the value
-    this.params = color.toHex();
+    // Save the value, allow null
+    this.params = color === null ? null : color.toHex();
     this.setValue(this.field, this.params);
   };
 
   ColorSelector.prototype.getColor = function () {
-    return '#' + this.params;
+    var isEmpty = this.params === null || this.params === "";
+    return isEmpty ? null : '#' + this.params;
   };
 
   /**
