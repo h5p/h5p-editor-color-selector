@@ -85,6 +85,14 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
       default: return color.toHexString();
     }
   };
+
+  /**
+   * Hide color selector
+   * @method hide
+   */
+  ColorSelector.prototype.hide = function () {
+    this.$colorPicker.spectrum('hide');
+  };
   /**
    * Save the color
    *
