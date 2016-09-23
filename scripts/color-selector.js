@@ -50,6 +50,10 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
       color: self.getColor(),
       change: function (color) {
         self.setColor(color);
+      },
+      hide: function (color) {
+        // Need this to get color if cancel is clicked
+        self.setColor(color);
       }
     };
 
@@ -113,6 +117,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    * Validate the current values.
    */
   ColorSelector.prototype.validate = function () {
+    this.hide();
     return (this.params.length !== 0);
   };
 
