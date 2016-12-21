@@ -31,14 +31,11 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
 
     var label = H5PEditor.createLabel(this.field);
     var description = H5PEditor.createDescription(this.field.description);
-    var $field = H5PEditor.$(H5PEditor.createItem('text h5p-color-selector', label + description));
+    var input = '<input type="text" class="h5p-color-picker">';
 
-    // Create input field
-    self.$colorPicker = $('<input>', {
-      'type': 'text',
-      'class': 'h5p-color-picker',
-      appendTo: $field
-    });
+    var html = H5PEditor.createItem(this.field.widget, label, description, input);
+    self.$item = H5PEditor.$(html);
+    self.$colorPicker = self.$item.find('.h5p-color-picker');
 
     self.config = {
       preferredFormat: 'hex',
@@ -60,7 +57,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     // Create color picker widget
     self.$colorPicker.spectrum(self.config);
 
-    $field.appendTo($wrapper);
+    self.$item.appendTo($wrapper);
   };
 
   /**
