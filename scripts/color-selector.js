@@ -1,12 +1,12 @@
 /**
- * ImagePositionSelector widget module
+ * ColorSelector widget module
  *
  * @param {H5P.jQuery} $
  */
 H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
 
   /**
-   * Creates an image position selector.
+   * Creates a color selector.
    *
    * @class H5PEditor.ColorSelector
    * @param {Object} parent
@@ -28,12 +28,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    */
   ColorSelector.prototype.appendTo = function ($wrapper) {
     var self = this;
-
-    var label = H5PEditor.createLabel(this.field);
-    var description = H5PEditor.createDescription(this.field.description);
-    var input = '<input type="text" class="h5p-color-picker">';
-
-    var html = H5PEditor.createItem(this.field.widget, label, description, input);
+    var html = H5PEditor.createFieldMarkup(this.field, '<input type="text" class="h5p-color-picker">');
     self.$item = H5PEditor.$(html);
     self.$colorPicker = self.$item.find('.h5p-color-picker');
 
