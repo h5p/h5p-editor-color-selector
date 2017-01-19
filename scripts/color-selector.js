@@ -1,12 +1,12 @@
 /**
- * ImagePositionSelector widget module
+ * ColorSelector widget module
  *
  * @param {H5P.jQuery} $
  */
 H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
 
   /**
-   * Creates an image position selector.
+   * Creates a color selector.
    *
    * @class H5PEditor.ColorSelector
    * @param {Object} parent
@@ -28,22 +28,9 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    */
   ColorSelector.prototype.appendTo = function ($wrapper) {
     var self = this;
-
-    self.$container = $('<div>', {
-      'class': 'field text h5p-color-selector'
-    });
-
-    // Add header:
-    $('<span>', {
-      'class': 'h5peditor-label',
-      html: self.field.label
-    }).appendTo(self.$container);
-
-    // Create input field
-    self.$colorPicker = $('<input>', {
-      'type': 'text',
-      'class': 'h5p-color-picker'
-    }).appendTo(self.$container);
+    var html = H5PEditor.createFieldMarkup(this.field, '<input type="text" class="h5p-color-picker">');
+    self.$item = H5PEditor.$(html);
+    self.$colorPicker = self.$item.find('.h5p-color-picker');
 
     self.config = {
       preferredFormat: 'hex',
@@ -65,13 +52,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     // Create color picker widget
     self.$colorPicker.spectrum(self.config);
 
-    // Add description:
-    $('<span>', {
-      'class': 'h5peditor-field-description',
-      html: self.field.description
-    }).appendTo(self.$container);
-
-    self.$container.appendTo($wrapper);
+    self.$item.appendTo($wrapper);
   };
 
   /**
