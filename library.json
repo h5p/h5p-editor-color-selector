@@ -9,7 +9,7 @@
     "majorVersion": 1,
     "minorVersion": 12
   },
-  "author": "Joubel AS",
+  "author": "Joubel",
   "preloadedJs": [
     {
       "path": "scripts/spectrum.js"
