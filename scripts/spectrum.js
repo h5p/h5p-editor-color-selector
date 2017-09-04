@@ -43,7 +43,7 @@
           togglePaletteOnly: false,
           showSelectionPalette: true,
           localStorageKey: false,
-          appendTo: "body",
+          appendTo: "body .h5peditor-form",
           maxSelectionSize: 7,
           cancelText: "cancel",
           chooseText: "choose",
@@ -298,7 +298,7 @@
 
                 var appendTo = opts.appendTo === "parent" ? boundElement.parent() : $(opts.appendTo);
                 if (appendTo.length !== 1) {
-                    appendTo = $("body");
+                    appendTo = $("body .h5peditor-form");
                 }
 
                 appendTo.append(container);
