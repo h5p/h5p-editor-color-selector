@@ -99,7 +99,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    */
   ColorSelector.prototype.validate = function () {
     this.hide();
-    return (this.params.length !== 0);
+    return (this.params !== undefined && this.params.length !== 0);
   };
 
   ColorSelector.prototype.remove = function () {};
