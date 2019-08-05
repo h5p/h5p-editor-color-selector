@@ -33,6 +33,7 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     self.$colorPicker = self.$item.find('.h5p-color-picker');
 
     self.config = {
+      appendTo: self.$item[0],
       preferredFormat: 'hex',
       color: self.getColor(),
       change: function (color) {
