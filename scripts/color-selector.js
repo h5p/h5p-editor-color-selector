@@ -28,7 +28,8 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    */
   ColorSelector.prototype.appendTo = function ($wrapper) {
     var self = this;
-    var html = H5PEditor.createFieldMarkup(this.field, '<input type="text" class="h5p-color-picker">');
+    const id = ns.getNextFieldId(this.field);
+    var html = H5PEditor.createFieldMarkup(this.field, '<input type="text" id="' + id + '" class="h5p-color-picker">', id);
     self.$item = H5PEditor.$(html);
     self.$colorPicker = self.$item.find('.h5p-color-picker');
 
