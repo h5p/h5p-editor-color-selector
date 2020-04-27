@@ -19,6 +19,8 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     this.field = field;
     this.params = params;
     this.setValue = setValue;
+
+    this.changes = [];
   }
 
   /**
@@ -89,6 +91,10 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
     // Save the value, allow null
     this.params = (color === null ? null : this.colorToString(color));
     this.setValue(this.field, this.params);
+
+    this.changes.forEach(function (cb) {
+      cb(this.params);
+    })
   };
 
   ColorSelector.prototype.getColor = function () {
