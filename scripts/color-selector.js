@@ -107,7 +107,12 @@ H5PEditor.widgets.colorSelector = H5PEditor.ColorSelector = (function ($) {
    */
   ColorSelector.prototype.validate = function () {
     this.hide();
-    return (this.params !== undefined && this.params.length !== 0);
+
+    if (this.field.spectrum.allowEmpty && this.params === null || this.params === '') {
+      return true;
+    }
+
+    return (this.params && this.params.length !== 0);
   };
 
   ColorSelector.prototype.remove = function () {};
